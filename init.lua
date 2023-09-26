@@ -428,6 +428,11 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'navigate to left window' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'navigate to right window' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'navigate to bottom window' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'navigate to top window' })
+
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
