@@ -22,6 +22,11 @@ vim.opt.tabstop = 8
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 -- vim.opt.noexpandtab = true
+-- make all tab characters use 4 spaces
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.autoindent = true
+vim.opt.wrap = false
 
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
@@ -294,6 +299,24 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+
+-- quick open file
+vim.keymap.set('n', '<leader>p', function()
+    require('telescope.builtin').find_files(require('telescope.themes').get_dropdown {
+        cwd = vim.fn.expand '%:p:h',
+        winblend = 10,
+        previewer = false,
+    })
+end, { desc = '[S]earch [O]pen directory' })
+
+-- search in files in current directory
+vim.keymap.set('n', '<S-f>', function()
+    require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown {
+        cwd = vim.fn.expand '%:p:h',
+        winblend = 10,
+        previewer = false,
+    })
+end, { desc = '[S]earch [O]pen directory' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
