@@ -143,6 +143,7 @@ require('lazy').setup({
             char = '┊',
             show_trailing_blankline_indent = false,
         },
+        version = '2.20.8'
     },
 
     {
